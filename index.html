@@ -1,643 +1,977 @@
-
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mạnh | Phạm Đức Mạnh</title>
-<meta name="description" content="Website cá nhân của Phạm Đức Mạnh – hành trình, kỷ niệm và những câu chuyện của tôi.">
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mạnh | Phạm Đức Mạnh</title>
+  <meta name="description"
+    content="Website cá nhân của Phạm Đức Mạnh – hành trình, kỷ niệm và những câu chuyện của tôi.">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
 
-<style>
-:root {
-  --blue:#3478db;
-  --navy:#142c54;
-  --purple:#a89ce9;
-  --peach:#ffc5a6;
-  --mint:#bcebdd;
-  --bg:#f8faff;
-  --text:#233654;
-  --muted:#72819b;
-  --card:#ffffff;
-  --border:#e6ecf6;
-}
-* {box-sizing:border-box}
-html {scroll-behavior:smooth}
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:"Be Vietnam Pro",sans-serif;
-  line-height:1.85;
-}
-body.dark {
-  --bg:#101c32;
-  --text:#edf3ff;
-  --muted:#afbdd4;
-  --card:#192943;
-  --border:#30415b;
-}
-a {text-decoration:none;color:inherit}
-button {font:inherit;cursor:pointer}
-section {scroll-margin-top:95px;padding:100px 7%}
-.container {max-width:1160px;margin:auto}
-h1,h2,h3,p {margin-top:0}
-h1,h2 {letter-spacing:-1.2px;line-height:1.25}
-h2 {font-size:clamp(31px,4vw,48px)}
-p {font-size:15px}
-.eyebrow {
-  text-transform:uppercase;
-  color:var(--blue);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:2.5px;
-}
-.gradient-text {
-  background:linear-gradient(110deg,#377bee,#a27bea);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-.btn {
-  display:inline-block;
-  background:var(--blue);
-  color:white;
-  border:0;
-  border-radius:50px;
-  padding:13px 24px;
-  font-weight:700;
-  font-size:13px;
-  transition:.25s;
-}
-.btn:hover {transform:translateY(-3px);background:#205ab5}
-.btn.ghost {
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--text);
-}
-.card {
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:27px;
-  box-shadow:0 14px 35px #173a7810;
-}
-header {
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:#142643f5;
-  backdrop-filter:blur(18px);
-  color:white;
-}
-nav {
-  max-width:1250px;
-  margin:auto;
-  padding:16px 6%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-.logo {font-size:25px;font-weight:800}
-.logo span {color:#8dc5ff}
-.links {
-  display:flex;
-  align-items:center;
-  gap:23px;
-}
-.links a {
-  color:#deebff;
-  font-size:12px;
-  font-weight:600;
-}
-.links a:hover {color:#93c7ff}
-#theme,#menuBtn {
-  background:#ffffff17;
-  color:white;
-  border:1px solid #ffffff25;
-  border-radius:12px;
-  padding:8px 12px;
-}
-#menuBtn {display:none}
+  <style>
+    :root {
+      --blue: #3478db;
+      --navy: #142c54;
+      --purple: #a89ce9;
+      --peach: #ffc5a6;
+      --mint: #bcebdd;
+      --bg: #f8faff;
+      --text: #233654;
+      --muted: #72819b;
+      --card: #ffffff;
+      --border: #e6ecf6;
+    }
 
-.hero {
-  min-height:90vh;
-  display:flex;
-  align-items:center;
-  background:
-    radial-gradient(circle at 75% 23%,#dacaff77,transparent 33%),
-    radial-gradient(circle at 14% 78%,#b6d9ff88,transparent 37%),
-    var(--bg);
-}
-.hero-grid {
-  display:grid;
-  grid-template-columns:1.2fr 0.8fr;
-  align-items:center;
-  gap:60px;
-}
-.hero h1 {
-  font-size:clamp(45px,6.5vw,85px);
-  margin:18px 0 24px;
-}
-.hero p {max-width:550px;color:var(--muted)}
-.actions {display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.hero-art {
-  min-height:435px;
-  border-radius:35px;
-  background:linear-gradient(145deg,#2151a4,#6b91ea 55%,#bca2ed);
-  position:relative;
-  display:grid;
-  place-items:center;
-  box-shadow:25px 25px 0 #a5c6ff44;
-  overflow:hidden;
-}
-.hero-art:before {
-  content:"";
-  width:240px;
-  height:240px;
-  border:1px solid #ffffff77;
-  border-radius:50%;
-  position:absolute;
-  box-shadow:0 0 0 45px #ffffff12,0 0 0 95px #ffffff08;
-}
-.hero-letter {
-  font-family:"Playfair Display",serif;
-  color:white;
-  font-size:180px;
-  line-height:1;
-  z-index:1;
-  text-shadow:0 20px 40px #153c8e66;
-}
-.hero-note {
-  position:absolute;
-  bottom:24px;
-  left:24px;
-  right:24px;
-  color:white;
-  font-size:12px;
-  letter-spacing:1px;
-  display:flex;
-  justify-content:space-between;
-}
-.section-head {margin-bottom:45px}
-.section-head p {max-width:680px;color:var(--muted)}
-.about-grid {
-  display:grid;
-  grid-template-columns:0.8fr 1.2fr;
-  gap:42px;
-  align-items:center;
-}
-.portrait {
-  background:linear-gradient(140deg,#b7d8ff,#e4dbff,#ffdfd1);
-  aspect-ratio:4/5;
-  border-radius:30px;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  padding:25px;
-  color:#345e96;
-  font-weight:700;
-}
-.portrait img {width:100%;height:100%;object-fit:cover;border-radius:28px}
-.facts {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:25px;
-}
-.fact {background:var(--card);border:1px solid var(--border);padding:18px;border-radius:17px}
-.fact small {display:block;color:var(--muted);font-size:11px;margin-bottom:5px}
-.fact strong {font-size:13px}
-.alt {background:linear-gradient(150deg,#eaf3ff88,#f3efff77)}
-.dark .alt {background:#14243d}
-.timeline {position:relative;display:grid;gap:22px}
-.timeline:before {
-  content:"";
-  position:absolute;
-  left:22px;top:20px;bottom:20px;
-  width:2px;
-  background:linear-gradient(var(--blue),var(--purple),var(--peach));
-}
-.timeline-item {display:flex;gap:25px;position:relative}
-.timeline-dot {
-  width:46px;height:46px;flex-shrink:0;
-  background:var(--blue);
-  color:white;
-  border-radius:50%;
-  display:grid;place-items:center;
-  font-weight:800;
-  z-index:1;
-}
-.timeline-item .card {flex:1}
-.timeline-item h3 {margin-bottom:6px}
-.tag {
-  color:var(--blue);
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:1px;
-}
-.cards {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-.hobby-icon {font-size:32px;margin-bottom:16px}
-.cards h3 {font-size:17px}
-.cards p {font-size:13px;color:var(--muted)}
-.tint-purple {background:#f0edff;color:#263555}
-.tint-blue {background:#eaf3ff;color:#263555}
-.tint-peach {background:#fff0e8;color:#263555}
-.tint-mint {background:#e8f7f3;color:#263555}
-.memory-grid {display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.memory-photo {
-  height:175px;
-  border-radius:17px;
-  margin-bottom:20px;
-  display:grid;
-  place-items:center;
-  font-size:42px;
-}
-.memory-grid h3 {font-size:19px}
-.memory-grid p {color:var(--muted);font-size:13px}
-.story-feature {
-  display:grid;
-  grid-template-columns:0.8fr 1.2fr;
-  gap:40px;
-  align-items:center;
-  margin-bottom:28px;
-}
-.book-cover {
-  aspect-ratio:3/4;
-  max-height:440px;
-  background:
-    radial-gradient(circle at 70% 23%,#e9efff,transparent 18%),
-    linear-gradient(170deg,#0c2448,#28569b 58%,#9ab1e9);
-  border-radius:9px 22px 22px 9px;
-  border-left:13px solid #0a1e3d;
-  box-shadow:17px 20px 30px #10244830;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  padding:35px 25px;
-  color:white;
-}
-.book-cover h3 {
-  font:700 clamp(26px,3vw,39px)/1.3 "Playfair Display",serif;
-}
-.book-cover span {font-size:12px;letter-spacing:2px}
-.quote {
-  border-left:4px solid var(--peach);
-  padding:16px 22px;
-  background:var(--card);
-  border-radius:0 15px 15px 0;
-  font-family:"Playfair Display",serif;
-  font-size:20px;
-  line-height:1.6;
-}
-.reflections {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-.reflections h3 {font-size:18px}
-.reflections p {color:var(--muted);font-size:13px}
-.end-quote {
-  margin-top:35px;
-  padding:38px;
-  text-align:center;
-  background:#152f59;
-  color:white;
-  border-radius:26px;
-}
-.end-quote p {font:600 24px/1.6 "Playfair Display",serif}
-.contact {
-  background:linear-gradient(135deg,#153769,#3769b4,#7778bb);
-  color:white;
-  text-align:center;
-}
-.contact .eyebrow {color:#b6daff}
-.contact p {color:#e1eaff}
-footer {
-  background:#102240;
-  color:#ccdcf3;
-  text-align:center;
-  padding:27px;
-  font-size:12px;
-}
-.reveal {opacity:0;transform:translateY(20px);transition:.7s}
-.reveal.visible {opacity:1;transform:none}
-@media(max-width:950px) {
-  .cards {grid-template-columns:repeat(2,1fr)}
-  .hero-grid,.about-grid,.story-feature {grid-template-columns:1fr}
-  .hero-art {min-height:340px}
-  .hero-letter {font-size:135px}
-}
-@media(max-width:700px) {
-  section {padding:75px 5%}
-  #menuBtn {display:block}
-  .links {
-    display:none;position:absolute;top:65px;
-    left:0;right:0;
-    background:#142643;
-    padding:22px;
-    flex-direction:column;
-    align-items:stretch;
-  }
-  .links.open {display:flex}
-  .links a {padding:7px}
-  .memory-grid,.reflections {grid-template-columns:1fr}
-  .cards {grid-template-columns:repeat(2,1fr)}
-  .facts {grid-template-columns:1fr 1fr}
-  .hero {min-height:auto}
-  .hero-grid {gap:35px}
-  .hero-art {min-height:280px}
-  .timeline-item {gap:12px}
-  .timeline:before {left:17px}
-  .timeline-dot {width:36px;height:36px}
-}
-@media(prefers-reduced-motion:reduce) {
-  *,*:before,*:after {scroll-behavior:auto!important;transition:none!important}
-  .reveal {opacity:1;transform:none}
-}
-</style>
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Be Vietnam Pro", sans-serif;
+      line-height: 1.85;
+    }
+
+    body.dark {
+      --bg: #101c32;
+      --text: #edf3ff;
+      --muted: #afbdd4;
+      --card: #192943;
+      --border: #30415b;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer
+    }
+
+    section {
+      scroll-margin-top: 95px;
+      padding: 100px 7%
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: auto
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0
+    }
+
+    h1,
+    h2 {
+      letter-spacing: -1.2px;
+      line-height: 1.25
+    }
+
+    h2 {
+      font-size: clamp(31px, 4vw, 48px)
+    }
+
+    p {
+      font-size: 15px
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(110deg, #377bee, #a27bea);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      border: 0;
+      border-radius: 50px;
+      padding: 13px 24px;
+      font-weight: 700;
+      font-size: 13px;
+      transition: .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: #205ab5
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 27px;
+      box-shadow: 0 14px 35px #173a7810;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #142643f5;
+      backdrop-filter: blur(18px);
+      color: white;
+    }
+
+    nav {
+      max-width: 1250px;
+      margin: auto;
+      padding: 16px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800
+    }
+
+    .logo span {
+      color: #8dc5ff
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+    }
+
+    .links a {
+      color: #deebff;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .links a:hover {
+      color: #93c7ff
+    }
+
+    #theme,
+    #menuBtn {
+      background: #ffffff17;
+      color: white;
+      border: 1px solid #ffffff25;
+      border-radius: 12px;
+      padding: 8px 12px;
+    }
+
+    #menuBtn {
+      display: none
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 75% 23%, #dacaff77, transparent 33%),
+        radial-gradient(circle at 14% 78%, #b6d9ff88, transparent 37%),
+        var(--bg);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 6.5vw, 85px);
+      margin: 18px 0 24px;
+    }
+
+    .hero p {
+      max-width: 550px;
+      color: var(--muted)
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px
+    }
+
+    .hero-art {
+      min-height: 435px;
+      border-radius: 35px;
+      background: linear-gradient(145deg, #2151a4, #6b91ea 55%, #bca2ed);
+      position: relative;
+      display: grid;
+      place-items: center;
+      box-shadow: 25px 25px 0 #a5c6ff44;
+      overflow: hidden;
+    }
+
+    .hero-art:before {
+      content: "";
+      width: 240px;
+      height: 240px;
+      border: 1px solid #ffffff77;
+      border-radius: 50%;
+      position: absolute;
+      box-shadow: 0 0 0 45px #ffffff12, 0 0 0 95px #ffffff08;
+    }
+
+    .hero-letter {
+      font-family: "Playfair Display", serif;
+      color: white;
+      font-size: 180px;
+      line-height: 1;
+      z-index: 1;
+      text-shadow: 0 20px 40px #153c8e66;
+    }
+
+    .hero-note {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      color: white;
+      font-size: 12px;
+      letter-spacing: 1px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .section-head {
+      margin-bottom: 45px
+    }
+
+    .section-head p {
+      max-width: 680px;
+      color: var(--muted)
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .portrait {
+      background: linear-gradient(140deg, #b7d8ff, #e4dbff, #ffdfd1);
+      aspect-ratio: 4/5;
+      border-radius: 30px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 25px;
+      color: #345e96;
+      font-weight: 700;
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 28px
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .fact {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 18px;
+      border-radius: 17px
+    }
+
+    .fact small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      margin-bottom: 5px
+    }
+
+    .fact strong {
+      font-size: 13px
+    }
+
+    .alt {
+      background: linear-gradient(150deg, #eaf3ff88, #f3efff77)
+    }
+
+    .dark .alt {
+      background: #14243d
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 22px
+    }
+
+    .timeline:before {
+      content: "";
+      position: absolute;
+      left: 22px;
+      top: 20px;
+      bottom: 20px;
+      width: 2px;
+      background: linear-gradient(var(--blue), var(--purple), var(--peach));
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 25px;
+      position: relative
+    }
+
+    .timeline-dot {
+      width: 46px;
+      height: 46px;
+      flex-shrink: 0;
+      background: var(--blue);
+      color: white;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      z-index: 1;
+    }
+
+    .timeline-item .card {
+      flex: 1
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 6px
+    }
+
+    .tag {
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .hobby-icon {
+      font-size: 32px;
+      margin-bottom: 16px
+    }
+
+    .cards h3 {
+      font-size: 17px
+    }
+
+    .cards p {
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    .tint-purple {
+      background: #f0edff;
+      color: #263555
+    }
+
+    .tint-blue {
+      background: #eaf3ff;
+      color: #263555
+    }
+
+    .tint-peach {
+      background: #fff0e8;
+      color: #263555
+    }
+
+    .tint-mint {
+      background: #e8f7f3;
+      color: #263555
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px
+    }
+
+    .memory-photo {
+      height: 175px;
+      border-radius: 17px;
+      margin-bottom: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 42px;
+    }
+
+    .memory-grid h3 {
+      font-size: 19px
+    }
+
+    .memory-grid p {
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .story-feature {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .book-cover {
+      aspect-ratio: 3/4;
+      max-height: 440px;
+      background:
+        radial-gradient(circle at 70% 23%, #e9efff, transparent 18%),
+        linear-gradient(170deg, #0c2448, #28569b 58%, #9ab1e9);
+      border-radius: 9px 22px 22px 9px;
+      border-left: 13px solid #0a1e3d;
+      box-shadow: 17px 20px 30px #10244830;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 35px 25px;
+      color: white;
+    }
+
+    .book-cover h3 {
+      font: 700 clamp(26px, 3vw, 39px)/1.3 "Playfair Display", serif;
+    }
+
+    .book-cover span {
+      font-size: 12px;
+      letter-spacing: 2px
+    }
+
+    .quote {
+      border-left: 4px solid var(--peach);
+      padding: 16px 22px;
+      background: var(--card);
+      border-radius: 0 15px 15px 0;
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    .reflections {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .reflections h3 {
+      font-size: 18px
+    }
+
+    .reflections p {
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    .end-quote {
+      margin-top: 35px;
+      padding: 38px;
+      text-align: center;
+      background: #152f59;
+      color: white;
+      border-radius: 26px;
+    }
+
+    .end-quote p {
+      font: 600 24px/1.6 "Playfair Display", serif
+    }
+
+    .contact {
+      background: linear-gradient(135deg, #153769, #3769b4, #7778bb);
+      color: white;
+      text-align: center;
+    }
+
+    .contact .eyebrow {
+      color: #b6daff
+    }
+
+    .contact p {
+      color: #e1eaff
+    }
+
+    footer {
+      background: #102240;
+      color: #ccdcf3;
+      text-align: center;
+      padding: 27px;
+      font-size: 12px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: .7s
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none
+    }
+
+    @media(max-width:950px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .hero-grid,
+      .about-grid,
+      .story-feature {
+        grid-template-columns: 1fr
+      }
+
+      .hero-art {
+        min-height: 340px
+      }
+
+      .hero-letter {
+        font-size: 135px
+      }
+    }
+
+    @media(max-width:700px) {
+      section {
+        padding: 75px 5%
+      }
+
+      #menuBtn {
+        display: block
+      }
+
+      .links {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        right: 0;
+        background: #142643;
+        padding: 22px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .links.open {
+        display: flex
+      }
+
+      .links a {
+        padding: 7px
+      }
+
+      .memory-grid,
+      .reflections {
+        grid-template-columns: 1fr
+      }
+
+      .cards {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .facts {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .hero {
+        min-height: auto
+      }
+
+      .hero-grid {
+        gap: 35px
+      }
+
+      .hero-art {
+        min-height: 280px
+      }
+
+      .timeline-item {
+        gap: 12px
+      }
+
+      .timeline:before {
+        left: 17px
+      }
+
+      .timeline-dot {
+        width: 36px;
+        height: 36px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *:before,
+      *:after {
+        scroll-behavior: auto !important;
+        transition: none !important
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none
+      }
+    }
+  </style>
 </head>
 
 <body>
-<header>
-<nav>
-  <a href="#home" class="logo">Phạm Đức Mạnh<span>.</span></a>
-  <button id="menuBtn" aria-label="Mở menu" aria-expanded="false">☰</button>
-  <div class="links" id="navLinks">
-    <a href="#about">Về tôi</a>
-    <a href="#journey">Hành trình</a>
-    <a href="#hobbies">Sở thích</a>
-    <a href="#memories">Kỷ niệm</a>
-    <a href="#story">Câu chuyện của tôi</a>
-    <a href="#contact">Kết nối</a>
-    <button id="theme" aria-label="Đổi giao diện">☾</button>
-  </div>
-</nav>
-</header>
-
-<main>
-<section class="hero" id="home">
-<div class="container hero-grid">
-  <div class="reveal">
-    <div class="eyebrow">Welcome to my little world</div>
-     <h1>Xin chào,<br>tôi là <span class="gradient-text">Phạm Đức Mạnh.</span></h1>
-    <p>
-      Tôi là Phạm Đức Mạnh, một người trẻ đến từ Vĩnh Phúc.
-      Đây là góc nhỏ để tôi kể về những nơi mình đã đi qua,
-      những điều khiến mình vui và những suy nghĩ đang dần
-      định hình con người mình.
-    </p>
-    <div class="actions">
-      <a href="#about" class="btn">Phạm Đức Mạnh phá về tôi ↗</a>
-      <a href="#journey" class="btn ghost">Xem hành trình</a>
-    </div>
-  </div>
-  <div class="hero-art reveal">
-    <div class="hero-letter">K</div>
-    <div class="hero-note"><span>BE YOURSELF ✦</span><span>SINCE 2007</span></div>
-  </div>
-</div>
-</section>
-
-<section id="about">
-<div class="container">
-  <div class="section-head reveal">
-    <div class="eyebrow">01 / About me</div>
-    <h2>Đôi điều <span class="gradient-text">về tôi.</span></h2>
-    <p>Tôi không nghĩ cuộc đời mình quá đặc biệt. Nhưng tôi tin rằng những điều bình dị cũng đủ để tạo nên một câu chuyện riêng.</p>
-  </div>
-  <div class="about-grid">
-    <div class="portrait reveal">
-      <div>
-        <div style="font-size:70px">✳</div>
-        <div>ẢNH CHÂN DUNG</div>
-        <small>Có thể bổ sung sau</small>
+  <header>
+    <nav>
+      <a href="#home" class="logo">Phạm Đức Mạnh<span>.</span></a>
+      <button id="menuBtn" aria-label="Mở menu" aria-expanded="false">☰</button>
+      <div class="links" id="navLinks">
+        <a href="#about">Về tôi</a>
+        <a href="#journey">Hành trình</a>
+        <a href="#hobbies">Sở thích</a>
+        <a href="#memories">Kỷ niệm</a>
+        <a href="#story">Câu chuyện của tôi</a>
+        <a href="#contact">Kết nối</a>
+        <button id="theme" aria-label="Đổi giao diện">☾</button>
       </div>
-    </div>
-    <div class="reveal">
-      <h3>Chào bạn, tôi là Phạm Đức Mạnh </h3>
-      <p>Tôi sinh ra và lớn lên ở Vĩnh Phúc, trong một gia đình bốn người và là con út. Những con đường quen thuộc cùng nhịp sống bình yên nơi quê nhà là phần ký ức đầu tiên của tôi.</p>
-      <p>Hiện tôi là sinh viên ngành Quản lý thông tin tại Trường Đại học Khoa học Xã hội và Nhân văn, Đại học Quốc gia Hà Nội.</p>
-      <p>Tôi thường quan sát và suy nghĩ trước khi thể hiện bản thân; đôi khi hơi trầm lặng, nhưng luôn muốn học hỏi và tiến bộ.</p>
-      <div class="facts">
-        <div class="fact"><small>QUÊ HƯƠNG</small><strong>Vĩnh Phúc</strong></div>
-        <div class="fact"><small>HỌC TẬP</small><strong>Quản lý thông tin</strong></div>
-        <div class="fact"><small>TRƯỜNG</small><strong>USSH · ĐHQGHN</strong></div>
-        <div class="fact"><small>TÍNH CÁCH</small><strong>Trầm lặng · Thích quan sát</strong></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">Welcome to my little world</div>
+          <h1>Xin chào,<br>tôi là <span class="gradient-text">Phạm Đức Mạnh.</span></h1>
+          <p>
+            Tôi là Phạm Đức Mạnh, một người trẻ đẹp trai đến từ Vĩnh Phúc.
+            Đây là góc nhỏ để tôi kể về những nơi mình đã đi qua,
+            những điều khiến mình vui và những suy nghĩ đang dần
+            định hình con người mình.
+          </p>
+          <div class="actions">
+            <a href="#about" class="btn">Phạm Đức Mạnh phá về tôi ↗</a>
+            <a href="#journey" class="btn ghost">Xem hành trình</a>
+          </div>
+        </div>
+        <div class="hero-art reveal">
+          <div class="hero-letter">K</div>
+          <div class="hero-note"><span>BE YOURSELF ✦</span><span>SINCE 2000</span></div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-</section>
+    </section>
 
-<section id="journey" class="alt">
-<div class="container">
-  <div class="section-head reveal">
-    <div class="eyebrow">02 / My journey</div>
-    <h2>Hành trình <span class="gradient-text">trưởng thành.</span></h2>
-    <p>Mỗi ngôi trường, mỗi người thầy cô đều để lại dấu ấn trong quá trình lớn lên của tôi.</p>
-  </div>
-  <div class="timeline">
-    <div class="timeline-item reveal">
-      <div class="timeline-dot">01</div>
-      <div class="card"><div class="tag">NHỮNG NĂM ĐẦU</div><h3>Mầm non Phú Xuân A</h3><p>Những ngày đầu rời nhà để làm quen với bạn bè, lớp học và thế giới rộng hơn gia đình.</p></div>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-dot">02</div>
-      <div class="card"><div class="tag">TIỂU HỌC</div><h3>Trường Tiểu học Phú Xuân</h3><p>Khoảng thời gian hồn nhiên, khi việc học mang nhiều niềm vui và tôi bắt đầu hiểu ý nghĩa của sự cố gắng.</p></div>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-dot">03</div>
-      <div class="card"><div class="tag">THCS</div><h3>THCS Phú Xuân</h3><p>Tôi dần nhận ra mình yêu thích điều gì và bắt đầu tìm thấy niềm vui khi chinh phục các bài toán.</p></div>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-dot">04</div>
-      <div class="card"><div class="tag">THPT</div><h3>THPT Võ Thị Sáu</h3><p>Ba năm để lại nhiều dấu ấn, nơi tôi học từ thầy cô, thử thách bản thân và trưởng thành hơn trong cách nhìn cuộc sống.</p></div>
-    </div>
-    <div class="timeline-item reveal">
-      <div class="timeline-dot">05</div>
-      <div class="card"><div class="tag">HIỆN TẠI</div><h3>Đại học Khoa học Xã hội và Nhân văn</h3><p>Tôi đang theo học ngành Quản lý thông tin, làm quen với những góc nhìn mới và học cách chủ động hơn với lựa chọn của mình.</p></div>
-    </div>
-  </div>
-</div>
-</section>
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">01 / About me</div>
+          <h2>Đôi điều <span class="gradient-text">về tôi.</span></h2>
+          <p>Tôi không nghĩ cuộc đời mình quá đặc biệt. Ngoài lọ ra thì tôi còn biết học thích gái múp đầy đặn. Nhưng
+            tôi tin rằng những điều bình dị cũng đủ để tạo nên một câu chuyện riêng.</p>
+        </div>
+        <div class="about-grid">
+          <div class="portrait reveal">
+            <img src="images/manh.jpg" alt="Ảnh chân dung" class="portrait-img">
+          </div>
+        </div>
+        <div class="reveal">
+          <h3>Chào bạn, tôi là Phạm Đức Mạnh </h3>
+          <p>Tôi sinh ra và lớn lên ở Vĩnh Phúc, trong một gia đình bốn người và là con út. Những con đường quen thuộc
+            cùng nhịp sống bình yên nơi quê nhà là phần ký ức đầu tiên của tôi.</p>
+          <p>Hiện tôi là sinh viên ngành Quản lý thông tin tại Trường Đại học Khoa học Xã hội và Nhân văn, Đại học Quốc
+            gia Hà Nội.</p>
+          <p>Tôi thường quan sát và suy nghĩ trước khi thể hiện bản thân; đôi khi hơi trầm lặng, nhưng luôn muốn học hỏi
+            và tiến bộ.</p>
+          <div class="facts">
+            <div class="fact"><small>QUÊ HƯƠNG</small><strong>Vĩnh Phúc</strong></div>
+            <div class="fact"><small>HỌC TẬP</small><strong>Quản lý thông tin</strong></div>
+            <div class="fact"><small>TRƯỜNG</small><strong>USSH · ĐHQGHN</strong></div>
+            <div class="fact"><small>TÍNH CÁCH</small><strong>Trầm lặng - Thích quan sát - Thích chị trang lớp QLTT B
+                K70</strong></div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
 
-<section id="hobbies">
-<div class="container">
-  <div class="section-head reveal">
-    <div class="eyebrow">03 / Things I love</div>
-    <h2>Những điều khiến tôi <span class="gradient-text">hứng thú.</span></h2>
-    <p>Những sở thích giản dị giúp tôi cân bằng cuộc sống và Phạm Đức Mạnh phá nhiều khía cạnh của chính mình.</p>
-  </div>
-  <div class="cards">
-    <article class="card tint-blue reveal">
-      <div class="hobby-icon">⚽</div><div class="tag">01 / MOVE</div>
-      <h3>Thể thao</h3>
-      <p>Bóng đá, bóng bàn, bóng chuyền, cầu lông hay đá cầu – tôi thích vận động và cười nói cùng bạn bè.</p>
-    </article>
-    <article class="card tint-purple reveal">
-      <div class="hobby-icon">∑</div><div class="tag">02 / THINK</div>
-      <h3>Toán học</h3>
-      <p>Tôi thích sự rõ ràng của Toán và cảm giác tìm ra lời giải sau khi kiên nhẫn thử nhiều cách.</p>
-    </article>
-    <article class="card tint-peach reveal">
-      <div class="hobby-icon">🎮</div><div class="tag">03 / RELAX</div>
-      <h3>Nghỉ ngơi</h3>
-      <p>Một ván game, xem video hoặc một buổi nghỉ ngơi đôi khi là cách đơn giản để nạp năng lượng.</p>
-    </article>
-    <article class="card tint-mint reveal">
-      <div class="hobby-icon">🛠️</div><div class="tag">04 / EXPLORE</div>
-      <h3>Tò mò và tự tay làm</h3>
-      <p>Tôi thích tìm hiểu cách mọi thứ hoạt động, tự sửa chữa và giải quyết những vấn đề nhỏ.</p>
-    </article>
-  </div>
-</div>
-</section>
+    <section id="journey" class="alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">02 / My journey</div>
+          <h2>Hành trình <span class="gradient-text">trưởng thành.</span></h2>
+          <p>Mỗi ngôi trường, mỗi người thầy cô đều để lại dấu ấn trong quá trình lớn lên của tôi.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">01</div>
+            <div class="card">
+              <div class="tag">NHỮNG NĂM ĐẦU</div>
+              <h3>Mầm non Phú Xuân A</h3>
+              <p>Những ngày đầu rời nhà để làm quen với bạn bè, lớp học và thế giới rộng hơn gia đình.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">02</div>
+            <div class="card">
+              <div class="tag">TIỂU HỌC</div>
+              <h3>Trường Tiểu học Phú Xuân</h3>
+              <p>Khoảng thời gian hồn nhiên, khi việc học mang nhiều niềm vui và tôi bắt đầu hiểu ý nghĩa của sự cố
+                gắng.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">03</div>
+            <div class="card">
+              <div class="tag">THCS</div>
+              <h3>THCS Phú Xuân</h3>
+              <p>Tôi dần nhận ra mình yêu thích điều gì và bắt đầu tìm thấy niềm vui khi chinh phục các bài toán.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">04</div>
+            <div class="card">
+              <div class="tag">THPT</div>
+              <h3>THPT Võ Thị Sáu</h3>
+              <p>Ba năm để lại nhiều dấu ấn, nơi tôi học từ thầy cô, thử thách bản thân và trưởng thành hơn trong cách
+                nhìn cuộc sống.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">05</div>
+            <div class="card">
+              <div class="tag">HIỆN TẠI</div>
+              <h3>Đại học Khoa học Xã hội và Nhân văn</h3>
+              <p>Tôi đang theo học ngành Quản lý thông tin, làm quen với những góc nhìn mới và học cách chủ động hơn với
+                lựa chọn của mình.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="memories" class="alt">
-<div class="container">
-  <div class="section-head reveal">
-    <div class="eyebrow">04 / Little moments</div>
-    <h2>Những người và <span class="gradient-text">kỷ niệm.</span></h2>
-    <p>Gia đình, bạn bè, tuổi học trò – những điều bình dị mà tôi luôn muốn giữ lại.</p>
-  </div>
-  <div class="memory-grid">
-    <article class="card reveal">
-      <div class="memory-photo tint-peach">🏡</div>
-      <div class="tag">NƠI BÌNH YÊN NHẤT</div>
-      <h3>Gia đình và quê nhà</h3>
-      <p>Là con út trong gia đình bốn người, tôi luôn có một nơi để trở về. Những điều quen thuộc ở quê nhà đã theo tôi trong suốt hành trình lớn lên.</p>
-    </article>
-    <article class="card reveal">
-      <div class="memory-photo tint-blue">🎓</div>
-      <div class="tag">CHÚNG TÔI CỦA NGÀY ẤY</div>
-      <h3>Bạn bè và tuổi học trò</h3>
-      <p>Có những người bước vào cuộc đời rất tự nhiên rồi vô tình trở thành một phần ký ức không thể thay thế.</p>
-    </article>
-    <article class="card reveal">
-      <div class="memory-photo tint-purple">✉️</div>
-      <div class="tag">NHỮNG KHOẢNH KHẮC NHỎ</div>
-      <h3>Điều còn ở lại</h3>
-      <p>Một cuộc gặp gỡ, một lời động viên, một ngày bình thường – đến khi nhìn lại, tất cả đều có ý nghĩa riêng.</p>
-    </article>
-  </div>
-</div>
-</section>
+    <section id="hobbies">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">03 / Things I love</div>
+          <h2>Những điều khiến tôi <span class="gradient-text">hứng thú.</span></h2>
+          <p>Những sở thích giản dị giúp tôi cân bằng cuộc sống và Phạm Đức Mạnh phá nhiều khía cạnh của chính mình.</p>
+        </div>
+        <div class="cards">
+          <article class="card tint-blue reveal">
+            <div class="hobby-icon">⚽</div>
+            <div class="tag">01 / MOVE</div>
+            <h3>Thể thao</h3>
+            <p>Bóng đá, bóng bàn, bóng chuyền, cầu lông hay đá cầu, chơi gay – tôi thích vận động và cười nói cùng bạn
+              bè.</p>
+          </article>
+          <article class="card tint-purple reveal">
+            <div class="hobby-icon">∑</div>
+            <div class="tag">02 / THINK</div>
+            <h3>Toán học</h3>
+            <p>Tôi thích sự rõ ràng của Toán và cảm giác tìm ra lời giải sau khi kiên nhẫn thử nhiều cách - Tôi đang có
+              1 dự án thế kỷ nghiên cứu ra công thức toán học mới nó sẽ làm thay đổi nền văn minh loài người.</p>
+          </article>
+          <article class="card tint-peach reveal">
+            <div class="hobby-icon">🎮</div>
+            <div class="tag">03 / RELAX</div>
+            <h3>Nghỉ ngơi</h3>
+            <p>Một ván game tài xỉu, xem video hoặc một buổi nghỉ ngơi đôi khi là cách đơn giản để nạp năng lượng.</p>
+          </article>
+          <article class="card tint-mint reveal">
+            <div class="hobby-icon">🛠️</div>
+            <div class="tag">04 / EXPLORE</div>
+            <h3>Tò mò và tự tay làm</h3>
+            <p>Tôi thích tìm hiểu cách mọi thứ hoạt động, tự sửa chữa và giải quyết những vấn đề nhỏ.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<section id="story">
-<div class="container">
-  <div class="section-head reveal">
-    <div class="eyebrow">05 / My story</div>
-    <h2>Câu chuyện <span class="gradient-text">của tôi.</span></h2>
-    <p>Không kể lại những cột mốc hay kỷ niệm ở trên. Đây là nơi tôi chia sẻ những điều mình đã nghĩ và dần nhận ra.</p>
-  </div>
+    <section id="memories" class="alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">04 / Little moments</div>
+          <h2>Những người và <span class="gradient-text">kỷ niệm.</span></h2>
+          <p>Gia đình, bạn bè, tuổi học trò – những điều bình dị mà tôi luôn muốn giữ lại.</p>
+        </div>
+        <div class="memory-grid">
+          <article class="card reveal">
+            <div class="memory-photo tint-peach">🏡</div>
+            <div class="tag">NƠI BÌNH YÊN NHẤT</div>
+            <h3>Gia đình và quê nhà</h3>
+            <p>Là con út trong gia đình bốn người, tôi luôn có một nơi để trở về. Những điều quen thuộc ở quê nhà đã
+              theo tôi trong suốt hành trình lớn lên.</p>
+          </article>
+          <article class="card reveal">
+            <div class="memory-photo tint-blue">🎓</div>
+            <div class="tag">CHÚNG TÔI CỦA NGÀY ẤY</div>
+            <h3>Bạn bè và tuổi học trò</h3>
+            <p>Có những người bước vào cuộc đời rất tự nhiên rồi vô tình trở thành một phần ký ức không thể thay thế.
+            </p>
+          </article>
+          <article class="card reveal">
+            <div class="memory-photo tint-purple">✉️</div>
+            <div class="tag">NHỮNG KHOẢNH KHẮC NHỎ</div>
+            <h3>Điều còn ở lại</h3>
+            <p>Một cuộc gặp gỡ, một lời động viên, một ngày bình thường – đến khi nhìn lại, tất cả đều có ý nghĩa riêng.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <div class="story-feature">
-    
-<div class="book-cover reveal">
-  <img
-    src="bia-sach.jpg"
-    alt="Bìa sách Những ngày tôi chưa biết mình"
-    class="book-cover-image"
-  >
-</div>
+    <section id="story">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">05 / My story</div>
+          <h2>Câu chuyện <span class="gradient-text">của tôi.</span></h2>
+          <p>Không kể lại những cột mốc hay kỷ niệm ở trên. Đây là nơi tôi chia sẻ những điều mình đã nghĩ và dần nhận
+            ra.</p>
+        </div>
 
-    <div class="reveal">
-      <div class="eyebrow">Tác phẩm của tôi</div>
-      <h2>Viết để hiểu mình hơn.</h2>
-      <p>Cuốn sách không bắt đầu từ một thành tựu lớn lao. Tôi viết bởi muốn một ngày nào đó, khi nhìn lại, mình vẫn có thể nhớ từng sống như thế nào, từng nghĩ gì và đã thay đổi ra sao.</p>
-      <p>Tôi không cố làm cho quá khứ trở nên đặc biệt hơn thực tế. Tôi chỉ muốn giữ lại những điều bình thường, theo cách chân thật nhất mà mình nhớ.</p>
-      <blockquote class="quote">“Và có lẽ, như thế là đủ cho một sự bắt đầu.”</blockquote>
-    </div>
-  </div>
+        <div class="story-feature">
 
-  <div class="reflections">
-    <div class="card reveal">
-      <div class="tag">01 / NHÌN LẠI</div>
-      <h3>Học cách hiểu mình</h3>
-      <p>Trưởng thành không chỉ là thêm một tuổi. Đó còn là lúc tôi học cách quan sát suy nghĩ, nhận ra điểm mạnh, điều còn thiếu và những thay đổi âm thầm.</p>
-    </div>
-    <div class="card reveal">
-      <div class="tag">02 / CHẤP NHẬN</div>
-      <h3>Không cần có mọi câu trả lời</h3>
-      <p>Có lúc tôi nghĩ mình phải sớm biết rõ bản thân muốn gì. Nhưng càng trải nghiệm, tôi càng hiểu cả sự mơ hồ cũng là một phần tự nhiên của hành trình Phạm Đức Mạnh khám phá chính mình.</p>
-    </div>
-    <div class="card reveal">
-      <div class="tag">03 / PHÍA TRƯỚC</div>
-      <h3>Cứ bước tiếp theo cách riêng</h3>
-      <p>Tôi muốn xây dựng sự kiên trì, khả năng thích nghi và thái độ nghiêm túc với những việc mình làm. Có thể con đường chưa rõ ràng, nhưng tôi vẫn muốn tiếp tục tiến lên.</p>
-    </div>
-  </div>
+          <div class="book-cover reveal">
+            <img src="images/anh-18-ko-che.jpg" alt="Bìa sách Những ngày tôi chưa biết mình" class="book-cover-image">
+          </div>
 
-  <div class="end-quote reveal">
-    <p>“Cuốn sách này khép lại, nhưng hành trình của tôi thì không.”</p>
-    <small>PHẠM ĐỨC MẠNH</small>
-  </div>
-</div>
-</section>
+          <div class="reveal">
+            <div class="eyebrow">Tác phẩm của tôi</div>
+            <h2>Viết để hiểu mình hơn.</h2>
+            <p>Cuốn sách không bắt đầu từ một thành tựu lớn lao. Tôi viết bởi muốn một ngày nào đó, khi nhìn lại, mình
+              vẫn có thể nhớ từng sống như thế nào, từng nghĩ gì và đã thay đổi ra sao.</p>
+            <p>Tôi không cố làm cho quá khứ trở nên đặc biệt hơn thực tế. Tôi chỉ muốn giữ lại những điều bình thường,
+              theo cách chân thật nhất mà mình nhớ.</p>
+            <blockquote class="quote">“Và có lẽ, như thế là đủ cho một sự bắt đầu.”</blockquote>
+          </div>
+        </div>
 
-<section id="contact" class="contact">
-<div class="container reveal">
-  <div class="eyebrow">06 / Say hello</div>
-  <h2>Cảm ơn vì đã ghé thăm<br>thế giới nhỏ của tôi.</h2>
-  <p>Hy vọng một ngày nào đó, những câu chuyện của chúng ta sẽ có dịp giao nhau.</p>
-  <button class="btn" id="helloBtn" style="background:#fff;color:#16396e">Để lại một lời chào ✦</button>
-  <p id="helloMessage" aria-live="polite" style="margin-top:20px"></p>
-</div>
-</section>
-</main>
+        <div class="reflections">
+          <div class="card reveal">
+            <div class="tag">01 / NHÌN LẠI</div>
+            <h3>Học cách hiểu mình</h3>
+            <p>Trưởng thành không chỉ là thêm một tuổi. Đó còn là lúc tôi học cách quan sát suy nghĩ, nhận ra điểm mạnh,
+              điều còn thiếu và những thay đổi âm thầm.</p>
+          </div>
+          <div class="card reveal">
+            <div class="tag">02 / CHẤP NHẬN</div>
+            <h3>Không cần có mọi câu trả lời</h3>
+            <p>Có lúc tôi nghĩ mình phải sớm biết rõ bản thân muốn gì. Nhưng càng trải nghiệm, tôi càng hiểu cả sự mơ hồ
+              cũng là một phần tự nhiên của hành trình Phạm Đức Mạnh khám phá chính mình.</p>
+          </div>
+          <div class="card reveal">
+            <div class="tag">03 / PHÍA TRƯỚC</div>
+            <h3>Cứ bước tiếp theo cách riêng</h3>
+            <p>Tôi muốn xây dựng sự kiên trì, khả năng thích nghi và thái độ nghiêm túc với những việc mình làm. Có thể
+              con đường chưa rõ ràng, nhưng tôi vẫn muốn tiếp tục tiến lên.</p>
+          </div>
+        </div>
 
-<footer>
-  <p>✳ Phạm Đức Mạnh. · My story is still being written</p>
-  <p>© <span id="year"></span> Phạm Đức Mạnh · <a href="#home">Lên đầu trang ↑</a></p>
-</footer>
+        <div class="end-quote reveal">
+          <p>“Cuốn sách này khép lại, nhưng hành trình của tôi thì không.”</p>
+          <small>PHẠM ĐỨC MẠNH</small>
+        </div>
+      </div>
+    </section>
 
-<script>
-const menuBtn=document.getElementById("menuBtn");
-const links=document.getElementById("navLinks");
-menuBtn.addEventListener("click",()=>{
-  const open=links.classList.toggle("open");
-  menuBtn.setAttribute("aria-expanded",String(open));
-  menuBtn.textContent=open?"✕":"☰";
-});
-document.querySelectorAll(".links a").forEach(link=>{
-  link.addEventListener("click",()=>{
-    links.classList.remove("open");
-    menuBtn.setAttribute("aria-expanded","false");
-    menuBtn.textContent="☰";
-  });
-});
-const themeBtn=document.getElementById("theme");
-themeBtn.addEventListener("click",()=>{
-  const dark=document.body.classList.toggle("dark");
-  themeBtn.textContent=dark?"☀":"☾";
-  try{localStorage.setItem("kha-theme",dark?"dark":"light")}catch(e){}
-});
-try{
-  if(localStorage.getItem("kha-theme")==="dark"){
-    document.body.classList.add("dark");
-    themeBtn.textContent="☀";
-  }
-}catch(e){}
-document.getElementById("year").textContent=new Date().getFullYear();
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    }
-  });
-},{threshold:0.08});
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-document.getElementById("helloBtn").addEventListener("click",()=>{
-  document.getElementById("helloMessage").textContent=
-    "Cảm ơn bạn đã ghé thăm! Chúc bạn luôn có những câu chuyện thật đẹp. 💙";
-});
-</script>
+    <section id="contact" class="contact">
+      <div class="container reveal">
+        <div class="eyebrow">06 / Say hello</div>
+        <h2>Cảm ơn vì đã ghé thăm<br>thế giới nhỏ của tôi.</h2>
+        <p>Hy vọng một ngày nào đó, những câu chuyện của chúng ta sẽ có dịp giao nhau.</p>
+        <button class="btn" id="helloBtn" style="background:#fff;color:#16396e">Để lại một lời chào ✦</button>
+        <p id="helloMessage" aria-live="polite" style="margin-top:20px"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>✳ Phạm Đức Mạnh. · My story is still being written</p>
+    <p>© <span id="year"></span> Phạm Đức Mạnh · <a href="#home">Lên đầu trang ↑</a></p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const links = document.getElementById("navLinks");
+    menuBtn.addEventListener("click", () => {
+      const open = links.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(open));
+      menuBtn.textContent = open ? "✕" : "☰";
+    });
+    document.querySelectorAll(".links a").forEach(link => {
+      link.addEventListener("click", () => {
+        links.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
+    const themeBtn = document.getElementById("theme");
+    themeBtn.addEventListener("click", () => {
+      const dark = document.body.classList.toggle("dark");
+      themeBtn.textContent = dark ? "☀" : "☾";
+      try { localStorage.setItem("kha-theme", dark ? "dark" : "light") } catch (e) { }
+    });
+    try {
+      if (localStorage.getItem("kha-theme") === "dark") {
+        document.body.classList.add("dark");
+        themeBtn.textContent = "☀";
+      }
+    } catch (e) { }
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    document.getElementById("helloBtn").addEventListener("click", () => {
+      document.getElementById("helloMessage").textContent =
+        "Cảm ơn bạn đã ghé thăm! Chúc bạn luôn có những câu chuyện thật đẹp. 💙";
+    });
+  </script>
 </body>
+
 </html>
