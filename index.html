@@ -15,18 +15,26 @@
 
 </style>
 
+
 <style>
-/* Hien thi toan bo anh Ban be */
-.memory-cards .memory-card:nth-child(2) img {
-  width: 100%;
-  height: auto;
-  max-height: none;
-  aspect-ratio: auto;
-  object-fit: contain;
-  object-position: center;
+/* Can bang khung anh trong muc Ky niem */
+.memory-cards .memory-card img {
+  width: 100% !important;
+  height: 300px !important;
+  max-height: 300px !important;
+  aspect-ratio: auto !important;
+  object-fit: cover !important;
   display: block;
 }
+
+/* Hien thi day du anh Ban be */
+.memory-cards .memory-card:nth-child(2) img {
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #f8f4ed;
+}
 </style>
+
   
 </head>
 <body>
